@@ -24,13 +24,19 @@
                             </label>
 
                             <div class="table w-full">
-                                <input id="username" type="text" class="table-cell relative appearance-none bg-grey-100 rounded-l w-full p-3 text-grey-700 focus:shadow-outline{{ $errors->has('username') ? ' border-red-500' : '' }}" name="username" value="{{ old('username') }}" placeholder="johndoe" required autofocus>
+                                <input id="username" type="text" class="table-cell relative appearance-none bg-grey-100 rounded-l w-full p-3 text-grey-700 focus:shadow-outline{{ $errors->has('username') ? ' border-red-500' : '' }}" name="username" value="{{ old('username') }}" placeholder="{{ __('johndoe') }}" required autofocus>
                                 <div class="py-3 px-2 table-cell align-middle bg-grey-200 rounded-r text-grey-600">
                                     .{{ config('anonaddy.domain') }}
                                 </div>
                             </div>
 
-                            <p class="text-xs mt-1 text-grey-600">This will be your unique subdomain for your aliases<br> e.g. alias@<b>johndoe</b>.{{ config('anonaddy.domain') }}</p>
+                            <p class="text-xs mt-1 text-grey-600">
+                                {!!
+                                    __('register.username.info', [
+                                        'domain' => e(config('anonaddy.domain'))
+                                    ])
+                                !!}
+                            </p>
 
 
                             @if ($errors->has('username'))
@@ -42,12 +48,12 @@
 
                         <div class="flex flex-wrap mb-6">
                             <label for="email" class="block text-grey-700 text-sm mb-2">
-                                Your Real Email Address:
+                                {{ __('Your Real Email Address') }}:
                             </label>
 
-                            <input id="email" type="email" class="appearance-none bg-grey-100 rounded w-full p-3 text-grey-700 focus:shadow-outline{{ $errors->has('email') ? ' border-red-500' : '' }}" name="email" value="{{ old('email') }}" placeholder="johndoe@example.com" required>
+                            <input id="email" type="email" class="appearance-none bg-grey-100 rounded w-full p-3 text-grey-700 focus:shadow-outline{{ $errors->has('email') ? ' border-red-500' : '' }}" name="email" value="{{ old('email') }}" placeholder="{{ __('johndoe') }}@example.com" required>
 
-                            <p class="text-xs mt-1 text-grey-600">This is your recipient where emails will be forwarded</p>
+                            <p class="text-xs mt-1 text-grey-600">{{ __('This is your recipient where emails will be forwarded') }}</p>
 
                             @if ($errors->has('email'))
                                 <p class="text-red-500 text-xs italic mt-4">
@@ -58,10 +64,10 @@
 
                         <div class="flex flex-wrap mb-6">
                             <label for="email-confirm" class="block text-grey-700 text-sm mb-2">
-                                Confirm Email Address:
+                                {{ __('Confirm Email Address') }}:
                             </label>
 
-                            <input id="email-confirm" type="email" class="appearance-none bg-grey-100 rounded w-full p-3 text-grey-700 focus:shadow-outline" name="email_confirmation" value="{{ old('email_confirmation') }}" placeholder="johndoe@example.com" required>
+                            <input id="email-confirm" type="email" class="appearance-none bg-grey-100 rounded w-full p-3 text-grey-700 focus:shadow-outline" name="email_confirmation" value="{{ old('email_confirmation') }}" placeholder="{{ __('johndoe') }}@example.com" required>
                         </div>
 
                         <div class="flex flex-wrap mb-6">
@@ -80,13 +86,13 @@
 
                         <div class="flex flex-wrap mb-4 items-center">
                             <label for="captcha" class="block w-full text-grey-700 text-sm">
-                                Verification:
+                                {{ __('Verification') }}:
                             </label>
 
                             <div class="flex flex-grow flex-wrap">
                                 <img src="{{captcha_src('mini')}}" class="flex-shrink-0 h-12 w-16 mr-2 mt-2">
 
-                                <input id="captcha" type="text" class="flex-grow mt-2 appearance-none bg-grey-100 rounded p-3 text-grey-700 focus:shadow-outline{{ $errors->has('captcha') ? ' border-red-500' : '' }}" name="captcha" placeholder="Enter the text you see" required>
+                                <input id="captcha" type="text" class="flex-grow mt-2 appearance-none bg-grey-100 rounded p-3 text-grey-700 focus:shadow-outline{{ $errors->has('captcha') ? ' border-red-500' : '' }}" name="captcha" placeholder="{{ __('Enter the text you see') }}" required>
                             </div>
 
                             @if ($errors->has('captcha'))
@@ -107,9 +113,9 @@
             </div>
             @if (Route::has('register'))
                 <p class="w-full text-xs text-center text-indigo-100 mt-6">
-                    Already have an account?
+                    {{ __('Already have an account?') }}
                     <a class="text-white hover:text-indigo-50 no-underline" href="{{ route('login') }}">
-                        Login
+                        {{ __('Login') }}
                     </a>
                 </p>
             @endif

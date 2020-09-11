@@ -14,7 +14,7 @@
                     <div class="px-6 py-8 md:p-10">
 
                         <h1 class="text-center font-bold text-3xl">
-                            Welcome Back!
+                            {{ __('Welcome Back!') }}
                         </h1>
 
                         <div class="mx-auto mt-6 w-24 border-b-2 border-grey-200"></div>
@@ -30,7 +30,7 @@
                                 {{ __('Username') }}:
                             </label>
 
-                            <input id="username" type="text" class="appearance-none bg-grey-100 rounded w-full p-3 text-grey-700 focus:shadow-outline{{ $errors->has('username') ? ' border-red-500' : '' }}" name="username" value="{{ old('username') }}" placeholder="johndoe" required autofocus>
+                            <input id="username" type="text" class="appearance-none bg-grey-100 rounded w-full p-3 text-grey-700 focus:shadow-outline{{ $errors->has('username') ? ' border-red-500' : '' }}" name="username" value="{{ old('username') }}" placeholder="{{ __('johndoe') }}" required autofocus>
 
                             @if ($errors->has('username'))
                                 <p class="text-red-500 text-xs italic mt-4">
@@ -78,9 +78,9 @@
             </div>
             @if (Route::has('register'))
                 <p class="w-full text-xs text-center text-indigo-100 mt-6">
-                    Don't have an account?
+                    {{ __('Don’t have an account?') }}
                     <a class="text-white hover:text-indigo-50 no-underline" href="{{ route('register') }}">
-                        Register
+                        {{ __('Register') }}
                     </a>
                 </p>
             @endif

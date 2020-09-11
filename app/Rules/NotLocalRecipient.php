@@ -27,7 +27,6 @@ class NotLocalRecipient implements Rule
     public function passes($attribute, $value)
     {
         $emailDomain = Str::afterLast($value, '@');
-
         $count = collect(config('anonaddy.all_domains'))
             ->filter(function ($domain) use ($emailDomain) {
                 return Str::endsWith(strtolower($emailDomain), $domain);
@@ -44,6 +43,6 @@ class NotLocalRecipient implements Rule
      */
     public function message()
     {
-        return 'The recipient cannot be a local one or alias.';
+        return __('validation.custom.localRecipientRestricted');
     }
 }

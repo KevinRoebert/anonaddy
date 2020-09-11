@@ -115,6 +115,7 @@ return [
     'uploaded' => 'The :attribute failed to upload.',
     'url' => 'The :attribute format is invalid.',
     'uuid' => 'The :attribute must be a valid UUID.',
+    'captcha' => 'The text entered was incorrect, please try again.',
 
     /*
     |--------------------------------------------------------------------------
@@ -128,9 +129,7 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
-        ],
+        'localRecipientRestricted' => 'The recipient cannot be a local one or alias.'
     ],
 
     /*

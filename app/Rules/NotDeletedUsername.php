@@ -42,6 +42,6 @@ class NotDeletedUsername implements Rule
      */
     public function message()
     {
-        return 'The :attribute has already been taken.';
+        return __('validation.unique');
     }
 }

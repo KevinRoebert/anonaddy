@@ -74,8 +74,6 @@ class RegisterController extends Controller
                 new NotLocalRecipient
             ],
             'password' => ['required', 'min:8'],
-        ], [
-            'captcha.captcha' => 'The text entered was incorrect, please try again.',
         ])
         ->sometimes('captcha', 'required|captcha', function () {
             return ! App::environment('testing');

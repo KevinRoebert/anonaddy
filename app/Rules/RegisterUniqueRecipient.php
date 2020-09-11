@@ -44,6 +44,6 @@ class RegisterUniqueRecipient implements Rule
      */
     public function message()
     {
-        return 'A user with that email already exists.';
+        return __('validation.unique');
     }
 }
